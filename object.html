@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="cont">
+      <p>yo wassup</p>
+
+      <p class="random-number">
+        this is a random nuumber <span class="num"></span>
+      </p>
+    </div>
+    <script>
+      class Account {
+        constructor(owner, currency, pin) {
+          this.owner = owner;
+          this.currency = currency;
+          this.pin = pin;
+          this.movements = [];
+          this.locale = navigator.language;
+        }
+        deposit(val) {
+          this.movements.push(val);
+        }
+        withdraw(val) {
+          this.deposit(val);
+        }
+        approveLoan() {
+          if (this.movements.length < 3) return true;
+          else {
+            return false;
+          }
+        }
+        requestLoan() {
+          if (this.approveLoan()) {
+            const amt = Number(prompt('how much u want'));
+            this.deposit(amt);
+          }
+          if (!this.approveLoan())
+            alert('u nead to havw done at least 3 transactions');
+        }
+      }
+
+      const acct1 = new Account('ojobo', 'EUR', 1111);
+      acct1.deposit(234);
+      acct1.withdraw(58);
+      acct1.withdraw(58);
+      acct1.requestLoan();
+      console.log(acct1);
+    </script>
+  </body>
+</html>
